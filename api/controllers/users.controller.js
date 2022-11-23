@@ -1,5 +1,5 @@
-const { script } = require("../scripts/user.detail.puppeteer");
-const { test } = require("../scripts/test.detail.puppeteer");
+const { script } = require("../scripts/user.detail.puppeteer instagramRepo");
+const { test } = require("../scripts/scroller.detail.puppeteer");
 const express = require("express");
 
 module.exports.detail = async (req, res, next) => {

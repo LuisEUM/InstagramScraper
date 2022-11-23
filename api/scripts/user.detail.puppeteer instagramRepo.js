@@ -119,7 +119,7 @@ module.exports.script = async (username) => {
         followers, 
         following
     };
-};
+}; 
 
 async function scrollDown(selector, page) {
     await page.evaluate(async selector => {
