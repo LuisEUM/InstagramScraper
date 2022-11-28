@@ -83,12 +83,12 @@ module.exports.test = async (username) => {
 
     console.log( 'Wating for the popup')
     const popup ='div._aano'
+    await page.waitForSelector(popup)
+
     const usernamesHref='div._aano > div:nth-child(1) > div > div > div:nth-child(2) > div:nth-child(1) > div > div > span > a'
-    const followersDialog = 'div._aano';
-    await page.waitForSelector(followersDialog)
     await page.waitForSelector(usernamesHref);
 
-    const items = await scrapeInfiniteScrollItems(page, 100, followersDialog, usernamesHref);
+    const items = await scrapeInfiniteScrollItems(page, 100, popup, usernamesHref);
 
 
     // const followersList =  await page.$$(usernamesHref, element => element.textContent)
@@ -103,44 +103,7 @@ module.exports.test = async (username) => {
   
     //   // Print all the files.
     //   console.log(followersList.join('\n'));
-
-    
-
-
 }
-
-
-// async function scrollDown(selector, page, followers) {
-//     await page.waitForSelector(selector)
-//     const elem = await page.$(selector);
-
-//     console.log('Testing.... selector',selector)
-//     console.log('Testing.... page', page)
-//      console.log('this is the mouse location', elem)
-//     const boundingBox = await elem.boundingBox();
-//     await page.mouse.move(
-//       boundingBox.x + boundingBox.width / 2, // x
-//       boundingBox.y + boundingBox.height / 2 // y
-//     );
-//     console.log('The mouse is in the middle', elem)
-    
-//     await page.mouse.wheel({deltaY: -100}, {delay: 10000000000000 });
-    
-//     console.log('Testing.... Wheel moved')
-
-//     let followersCounter = 0;
-//     const totalFollowers = parseInt(followers.split(',').join('')) + 0
-
-//     while (totalFollowers >= followersCounter) {
-//         console.log('Testing... enntro al bucle')
-//         followersCounter++
-//         console.log('this is the counter', followersCounter, 'and the followers', totalFollowers)
-//         await page.mouse.wheel({deltaY: -100}, {delay: 10000000000000 });
-//     }
-//     console.log('Testing... salio o no entro al bucle')
-// }
-
-
 
 // const scrapeInfiniteScrollItems = async (page, itemTargetCount, selector, listSelector) => {
 //     console.log('Testing page...',page)
