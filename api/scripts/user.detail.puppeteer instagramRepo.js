@@ -139,5 +139,6 @@ async function scrollDown(selector, page) {
             }, 100);
         });
     }, selector);
+
 }
 

@@ -5,6 +5,7 @@ module.exports.test = async (username) => {
     const context = await browser.createIncognitoBrowserContext()
     const page = await context.newPage();
 
+
     console.log(username, username)
   
     await page.goto(
@@ -19,6 +20,6 @@ module.exports.test = async (username) => {
       boundingBox.y + boundingBox.height / 2 // y
     );
     
-console.log(elem)
     await page.mouse.wheel({deltaY: -100}, {delay: 10000000000000 });
+
   }
