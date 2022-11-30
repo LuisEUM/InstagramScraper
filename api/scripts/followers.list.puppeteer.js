@@ -1,8 +1,7 @@
 const puppeteer = require('puppeteer');
 
-
-
-module.exports.test = async (username) => {
+module.exports.followersListData = async (username) => {
+    const data = []
     const browser = await puppeteer.launch({headless: false});
     const context = await browser.createIncognitoBrowserContext()
     const page = await context.newPage();
@@ -56,9 +55,9 @@ module.exports.test = async (username) => {
 
 
     const followers = await page.$eval(`a[href="/${username}/followers/"] > div > span`, element => element.textContent)
-    const following = await page.$eval(`a[href="/${username}/following/"] > div > span`, element => element.textContent) 
+    // const following = await page.$eval(`a[href="/${username}/following/"] > div > span`, element => element.textContent) 
 
-    console.info(`Followers of ${username}: ${followers}`, ` ${username} is following to: ${following}`)
+    console.info(`Followers of ${username}: ${followers}`)
 
     console.info('Option 1 getting usernames clicking the followers button')
     const followersBtn = await page.$x("//div[contains(text(), ' followers')]/span");
@@ -79,15 +78,21 @@ module.exports.test = async (username) => {
 
     const totalFollowersNumber = parseInt(followers.split(',').join('')) + 0
     console.info('Followers string transformed into Number', totalFollowersNumber)
+    
+    data.totalFollowers = totalFollowersNumber
 
-    await scrapeInfiniteScrollItems(page, totalFollowersNumber, popup, usernamesHref, scroller);
-    // const items = await scrapeInfiniteScrollItems(page, totalFollowersNumber, followersDialog, usernamesHref);
+    const listOfFollowers = await scrapeInfiniteScrollItems(page, totalFollowersNumber, popup, usernamesHref, scroller);
+
+    data.followers = listOfFollowers
+    
+    await browser.close();
+
+    return data
 }
 
 
 const scrapeInfiniteScrollItems = async (page, followers, selector, listSelector, scroller) => {
     let followersCounter = 0;
-    let items  = [];
     let checkingTheEnd = []
 
 
@@ -128,12 +133,12 @@ const scrapeInfiniteScrollItems = async (page, followers, selector, listSelector
     console.info("You managed to escape from the loop and now you will obtained the list of links with all the followers")
 
 
- //THIS IS THE ARRAY LIST WITH ALL THE ELEMENTS 
     const listOfFollowers = await page.evaluate(listSelector => {
         return [...document.querySelectorAll(listSelector)].map(anchor => {
-            return `${anchor.href}`;
-            // const title = anchor.textContent.split('|')[0].trim();
+            // return `${anchor.href}`;
+            const title = anchor.textContent.split('|')[0].trim();
             // return `${title} - ${anchor.href}`;
+            return `${title}` 
         });
     }, listSelector);
 

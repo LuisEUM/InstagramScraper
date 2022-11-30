@@ -1,5 +1,5 @@
 module.exports = {
-  User: require('./users.routes'),
+  Target: require('./targets.routes'),
   Auth: require('./auth.routes'),
 }
 
