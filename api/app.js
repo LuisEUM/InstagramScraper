@@ -3,6 +3,8 @@ require("dotenv").config();
 const createError = require("http-errors");
 const express = require("express");
 const logger = require("morgan");
+const mongoose = require("mongoose");
+require("./config/db.config");
 
 const app = express();
 
@@ -20,6 +22,9 @@ app.use((req, res, next) => {
 app.use(express.json());
 app.use(logger("dev"));
 
+const { session, loadUser } = require("./config/session.config");
+app.use(session);
+app.use(loadUser);
 
 const routes = require("./config/routes.config.js");
 app.use("/api/v1", routes);
