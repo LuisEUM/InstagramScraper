@@ -1,16 +1,23 @@
 # InstagramScraper
-With this little friend, we will get a list of possibles influencers, it will be obteined by usernames followers.
+With this API you will be able to get a list of all the followers of any account (except private ones, unless you already follow them and they have accepted it). And you will also be able to know how many followers each user has in your list.
+
+
+## Read before you start:
+- This was done for educational reasons only, you are solely responsible for what you do with this tool.
+- This project was made on Windows, it may have problems with other operating systems.
+- Make sure that the installation has been successful before using the API.
+
 
 ##  INSTALLATION:
-1. Download the Repo.
+1. Clone or Fork this Repo.
 
 2. Create one **.env** file inside the **api** folder.
 
 3. Set the next two variables with a real instagram account:
 
 ```
-    USERNAME_INSTAGRAM="usernamexample"
-    PASSWORD_INSTAGRAM="Example.1234"
+USERNAME_INSTAGRAM="usernamexample"
+PASSWORD_INSTAGRAM="Example.1234"
 ```  
 **Note:** Use a Fake Account, you could be banned for life on Instagram.
 
@@ -32,15 +39,14 @@ With this little friend, we will get a list of possibles influencers, it will be
 
         - Create a database user for your cluster.
 
-        - Connect to your cluster. You should set the variable MONGODB_URI inside the ".env" file with your connection string it would look similar to this: 
+        - Connect to your cluster. Set the variable `MONGODB_URI` inside the **.env** file with your connection string it should look similar to this: 
 ```
-    MONGODB_URI="mongodb+srv://<account>:<password>@instagramscrapper.kcmwbdf.mongodb.net/?retryWrites=true&w=majority".
+MONGODB_URI="mongodb+srv://<account>:<password>@instagramscrapper.kcmwbdf.mongodb.net/?retryWrites=true&w=majority".
 ```
 
 **Note:** Remember that you should change the  `<account>` and `<password>` parameters with yours credentials and this is just an example.
 
-7. Write the next script for development mode `npm run dev` and now you will be able to use our API.
-
+7. Write the next script for development mode `npm run dev` and if everthing is done correctly you will be able to see a message in your terminal indacting the port and the database that you are using.
 
 
 ## API REST HTTP Instructions:
