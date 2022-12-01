@@ -1,9 +1,7 @@
 # InstagramScraper
-___
 With this little friend, we will get a list of possibles influencers, it will be obteined by usernames followers.
 
 ##  INSTALLATION:
-___
 1. Download the Repo.
 
 2. Create one ".env" file inside the API.
@@ -14,11 +12,11 @@ ___
     USERNAME_INSTAGRAM="usernamexample"
     PASSWORD_INSTAGRAM="Example.1234"
 ```  
-~Note: Use a Fake Account, you could be banned for life on Instagram.~
+Note: Use a Fake Account, you could be banned for life on Instagram.
     
 4. Locate you terminal inside the "api" folder and install all the dependencies with "npm install". 
 
-5. OPTIONAL. You could change the default port setting inside the ".env" file the variable PORT, if you don't do that the app will run in the port 4000.
+5. OPTIONAL. You could change the default port setting inside the ".env" file the variable `PORT`, if you don't do that the app will run in the port 4000.
 
 6. You have two options now: 
   + Storage the data locally: 
@@ -34,8 +32,8 @@ ___
     - Create a database user for your cluster.
 
     - Connect to your cluster. You should set the variable MONGODB_URI inside the ".env" file with your connection string it would look similar to this: 
-        MONGODB_URI="mongodb+srv://`<account>`:`<password>`@instagramscrapper.kcmwbdf.mongodb.net/?retryWrites=true&w=majority"
-    ~Note: Remember that you should change the  `<account>` and `<password>` parameters with yours credentials and this is just an example.~
+        MONGODB_URI="mongodb+srv://`<account>`:`<password>`@instagramscrapper.kcmwbdf.mongodb.net/?retryWrites=true&w=majority".
+    Note: Remember that you should change the  `<account>` and `<password>` parameters with yours credentials and this is just an example.
 
     - Load sample data or your own data!.    
 
@@ -43,22 +41,19 @@ ___
 
 
 ## API REST HTTP Instructions:
-___
-### Methods available: 
-___
+
+### __Methods available:__ 
 - GET
 - POST
 - UPDATE
 - DELETE 
 
-### Current version:
-___
+### ++Current version:++
 - Number 1 
 
 ### Basic domain and path:
-___
 - http://localhost:4000/api/v1/
-~Note: Remember that the domain port number may be different if you have changed it before.~
+Note: Remember that the domain port number may be different if you have changed it before.
 
 
 
