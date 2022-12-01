@@ -44,9 +44,9 @@ PASSWORD_INSTAGRAM="Example.1234"
 MONGODB_URI="mongodb+srv://<account>:<password>@instagramscrapper.kcmwbdf.mongodb.net/?retryWrites=true&w=majority".
 ```
 
-**Note:** Remember that you should change the  `<account>` and `<password>` parameters with yours credentials and this is just an example.
+**Note:** Change the  `<account>` and `<password>` parameters with yours credentials, this is just an example the string must be different.
 
-7. Write the next script for development mode `npm run dev` and if everthing is done correctly you will be able to see a message in your terminal indacting the port and the database that you are using.
+7. Type the following script for development mode `npm run dev` and if everything is done correctly you will see a message in your terminal indicating the port and database you are using.
 
 
 ## API REST HTTP Instructions:
@@ -66,10 +66,74 @@ MONGODB_URI="mongodb+srv://<account>:<password>@instagramscrapper.kcmwbdf.mongod
 **Note:** Remember that the domain port number may be different if you have changed it before.
 
 
+
+
+### Available Paths:
+
+#### Auth Routes:
+
 | http verb | path                 | status codes  | purpose |
 | --------- | -------------------- | ------------- | ------- |
-| GET       | target               | 200,          | list    |
+| POST      | register             | 201, 400      | create  |
+| POST      | authenticate         | 200, 400      | access  |
+| GET       | profile              | 200           | detail  |
+| PATCH     | update               | 200, 400, 404 | update  |
+| DELETE    | logout               | 204, 404      | logout  |
+
+
+
+- `POST` **http://localhost:4000/api/v1/register:**  Create a new account with your username, email and passord.
+
+```
+{
+    "username": "luiseum",
+    "email": "luis@example.com",
+    "password" : "Example.123"
+}
+```
+
+- `POST` **http://localhost:4000/api/v1/authenticate:**  Login in your account with your email addres or username:
+
+```
+{
+    "identifier": "luis@example.com",
+    "password" : "Example.123"
+}
+```
+
+- `GET` **http://localhost:4000/api/v1/profile:**  Return your account info if you are logged.
+
+```
+{
+    "id": "1234567890"
+    "username": "luiseum",
+    "email": "luis@example.com",
+    "password" : "Example.123"
+}
+```
+
+- `PATCH` **http://localhost:4000/api/v1/update:** Update any value of your account except the id.
+
+```
+{
+    "username": "luis",
+}
+```
+
+
+- `DELETE` **http://localhost:4000/api/v1/logout:** This will delete from the headers your credentials and log you out.
+
+
+#### Target Routes:
+
+| http verb | path                 | status codes  | purpose |
+| --------- | -------------------- | ------------- | ------- |
 | POST      | target               | 201, 400      | create  |
-| GET       | target/:id           | 200, 404      | detail  |
-| PATCH     | target/:id           | 200, 400, 404 | update  |
-| DELETE    | target/:id           | 204, 404      | delete  |
+
+- `POST` **http://localhost:4000/api/v1/target:**  Create your target account with his username. This will return and create the owner (your account id), the target username, a list of followers (this will be an array) and the followers total (number). 
+
+```
+{
+    "username": "elonmuskoffiicial",
+}
+```
