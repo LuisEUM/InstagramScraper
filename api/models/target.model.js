@@ -22,8 +22,11 @@ const targetSchema = new Schema(
     }],
     totalFollowers: {
     type: Number,
-    required: "Followers is required"
-    }
+    required: "Total Followers is required"
+    },
+    followersWithFollowers:{
+      type: Array,
+    },
   },
   {
     timestamps: true,

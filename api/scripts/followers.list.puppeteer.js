@@ -1,6 +1,6 @@
 const puppeteer = require('puppeteer');
 
-module.exports.followersListData = async (username) => {
+module.exports.followers = async (username) => {
     const data = []
     const browser = await puppeteer.launch({headless: false});
     const context = await browser.createIncognitoBrowserContext()

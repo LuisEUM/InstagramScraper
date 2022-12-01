@@ -51,12 +51,6 @@ MONGODB_URI="mongodb+srv://<account>:<password>@instagramscrapper.kcmwbdf.mongod
 
 ## API REST HTTP Instructions:
 
-### Available Methods: 
-- GET
-- POST
-- PATCH
-- DELETE 
-
 ### Current version:
 - v1 
 
@@ -82,7 +76,7 @@ MONGODB_URI="mongodb+srv://<account>:<password>@instagramscrapper.kcmwbdf.mongod
 
 
 
-- `POST` **http://localhost:4000/api/v1/register:**  Create a new account with your username, email and passord.
+- `POST` **http://localhost:4000/api/v1/register:**  Create a new account with your username, email and password.
 
 ```
 {

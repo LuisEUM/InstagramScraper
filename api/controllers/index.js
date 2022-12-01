@@ -1,5 +1,5 @@
 module.exports = {
-  users: require("./users.controller.js"),
+  target: require("./target.controller.js"),
   auth: require("./auth.controller.js")
 };
 
