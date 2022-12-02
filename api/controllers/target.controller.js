@@ -1,4 +1,4 @@
-const { Tables, List, Followers } = require("../scripts");
+const { Tables, List, Followers, Continue } = require("../scripts");
 const { Target } = require("../models");
 
 module.exports.detail = async (req, res, next) => {
@@ -33,13 +33,20 @@ module.exports.create = async (req, res, next) => {
 module.exports.list = async (req, res, next) => {
   const owner = req.user.id
 
-  if(owner === undefined){
+  if (owner === undefined) {
     return res.status(400).json(undefined)
-  }else{
+  } 
+  else if(req.query) {
+    Target.find({$and: [ {owner}, req.query]})
+    .then(target => res.status(200).json(target))
+    .catch(next)
+  } 
+ else {
     Target.find({owner})
     .then(target => res.status(200).json(target))
     .catch(next)
   }
+
 }
 
 
@@ -97,19 +104,65 @@ module.exports.tables = async (req, res, next) => {
 
 
 
+// module.exports.followers = async (req, res, next) => {
+
+//   const target = req.target
+
+//   console.info(`starting script for user ${target.username}, creating followers list`);
+//   const data = await Followers.followers(target.followers);
+//   console.info(`stopping script for user ${target.username}, followers list created`);
+
+//   target.followersWithFollowers = data
+
+//   target
+//       .save()
+//       .then(target => res.status(200).json(target.followersWithFollowers))
+//       .catch(next);
+  
+// }
+
+
 module.exports.followers = async (req, res, next) => {
 
   const target = req.target
 
-  console.info(`starting script for user ${target.username}, creating followers list with createrials`);
-  const data = await Followers.followers(target.followers);
-  console.info(`stopping script for user ${target.username}, followers list  with createrials created`);
+  console.info(`starting script for user ${target.username}, adding followers to the list`);
+  const data = await Continue.followers(target.followers, target.followersWithFollowers);
+  console.info(`stopping script for user ${target.username}, task of adding followers to the list finished`);
 
-  target.followersWithFollowers = data
+  (target.followersWithFollowers === 0) ? (target.followersWithFollowers = data) : (target.followersWithFollowers.push(...data))
+
 
   target
       .save()
       .then(target => res.status(200).json(target.followersWithFollowers))
       .catch(next);
   
+}
+
+
+module.exports.filter = async (req, res, next) => {
+  const target = req.target.followersWithFollowers
+  const path = 'req.target.totalFollowers'
+  const owner = req.user.id
+
+  target.forEach(element => {
+    return console.log('element')
+  });
+  
+  if (owner === undefined) {
+    return res.status(400).json(undefined)
+  } else if (req.query && req.query.gte || req.query.lte) {
+    // Target.find({numberCriterial:{$gte: req.query.gte}})
+    Target.find({owner : req.user.id, path:{$gte: req.query.gte, $lte: req.query.lte}})
+    .then(target => res.status(200).json(target)) 
+    .catch(next)
+  } else {
+    Target.find({owner})
+    .then(target => res.status(200).json(target))
+    .catch(next)
+  }
+
+  // { name: 'Space Ghost', age: { $gte: 21, $lte: 65 }}
+
 }
