@@ -1,0 +1,315 @@
+{
+	"info": {
+		"_postman_id": "71980386-4c6a-4a37-be8e-f63144658026",
+		"name": "Instagram Scrapper V.1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Profile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlV1}}/profile",
+							"host": [
+								"{{urlV1}}"
+							],
+							"path": [
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"tangle\",\r\n    \"email\": \"tangle@example.com\",\r\n    \"password\" : \"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlV1}}/register",
+							"host": [
+								"{{urlV1}}"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Authenticate",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"identifier\": \"luis@example.com\",\r\n    \"password\" : \"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlV1}}/authenticate",
+							"host": [
+								"{{urlV1}}"
+							],
+							"path": [
+								"authenticate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"luiseum\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlV1}}/update",
+							"host": [
+								"{{urlV1}}"
+							],
+							"path": [
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{urlV1}}/logout",
+							"host": [
+								"{{urlV1}}"
+							],
+							"path": [
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Taget",
+			"item": [
+				{
+					"name": "Create Target",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"ramong77\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlV1}}/target",
+							"host": [
+								"{{urlV1}}"
+							],
+							"path": [
+								"target"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Targets List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlV1}}/target",
+							"host": [
+								"{{urlV1}}"
+							],
+							"path": [
+								"target"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Targets List Query",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlV1}}/target/?followersWithFollowers.username=victoriaciscar",
+							"host": [
+								"{{urlV1}}"
+							],
+							"path": [
+								"target",
+								""
+							],
+							"query": [
+								{
+									"key": "followersWithFollowers.username",
+									"value": "victoriaciscar"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Target Detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlV1}}/target/638947d32a37947037117d9a",
+							"host": [
+								"{{urlV1}}"
+							],
+							"path": [
+								"target",
+								"638947d32a37947037117d9a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Target Detail Query",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlV1}}/target/638947d32a37947037117d9a/followers/filter/?gte=15&lte=50",
+							"host": [
+								"{{urlV1}}"
+							],
+							"path": [
+								"target",
+								"638947d32a37947037117d9a",
+								"followers",
+								"filter",
+								""
+							],
+							"query": [
+								{
+									"key": "gte",
+									"value": "15"
+								},
+								{
+									"key": "lte",
+									"value": "50"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Target Update",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{urlV1}}/target/6387c67463bf95b508c8bad6",
+							"host": [
+								"{{urlV1}}"
+							],
+							"path": [
+								"target",
+								"6387c67463bf95b508c8bad6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Target Followers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlV1}}/target/638947d32a37947037117d9a/followers",
+							"host": [
+								"{{urlV1}}"
+							],
+							"path": [
+								"target",
+								"638947d32a37947037117d9a",
+								"followers"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "urlV1",
+			"value": "http://localhost:4000/api/v1/",
+			"type": "default"
+		},
+		{
+			"value": "",
+			"type": "default"
+		}
+	]
+}
