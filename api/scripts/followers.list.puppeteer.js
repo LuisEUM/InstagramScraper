@@ -54,7 +54,7 @@ module.exports.followers = async (username) => {
     // const followersBtn = await page.$x('/html/body/div[1]/div/div/div/div[1]/div/div/div/div[1]/section/main/div/header/section/ul/li[2]/button/div ');
 
 
-    const followers = await page.$eval(`a[href="/${username}/followers/"] > div > span`, element => element.textContent)
+    const followers = await page.$eval(`a[href="/${username}/followers/"] > div > span`, element => element.title)
     // const following = await page.$eval(`a[href="/${username}/following/"] > div > span`, element => element.textContent) 
 
     console.info(`Followers of ${username}: ${followers}`)

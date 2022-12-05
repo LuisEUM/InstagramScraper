@@ -52,7 +52,7 @@ module.exports.followers = async (usernameList) => {
 
             try {
                 // await page.waitForSelector(`a[href="/${user}/followers/"] > div > span`);
-                const followers = await page.$eval(`a[href="/${user}/followers/"] > div > span`, element => element.textContent)
+                const followers = await page.$eval(`a[href="/${user}/followers/"] > div > span`, element => element.title)
                 console.info(`Followers of ${user}: ${followers}`)
 
                 const totalFollowersNumber = parseInt(followers.split(',').join('')) + 0 
@@ -72,7 +72,7 @@ module.exports.followers = async (usernameList) => {
 
             try {
                 // await page.waitForSelector(`ul.x78zum5 > li:nth-child(2) > div > span > span`);
-                const privateAccount = await page.$eval(`ul.x78zum5 > li:nth-child(2) > div > span > span`, element => element.textContent)
+                const privateAccount = await page.$eval(`ul.x78zum5 > li:nth-child(2) > div > span`, element => element.title)
                 console.info(`Followers of ${user}: ${privateAccount}`)
                 
                 const totalFollowersNumber = parseInt(privateAccount.split(',').join('')) + 0
