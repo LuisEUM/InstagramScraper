@@ -9,15 +9,16 @@ I hope this API can help or entertain you, and if you want to help me to improve
 
 
 ## Technologies
-![JavaScript](https://alkitu.com/wp-content/uploads/2022/12/JavaSript-Logo.png "JavaScript Logo" )
-<img src="https://alkitu.com/wp-content/uploads/2022/12/JavaSript-Logo.png" alt="JavaScript Logo"  width="50" height="50">
-![NodeJS](https://alkitu.com/wp-content/uploads/2022/12/Node-JS-Logo.png "NodeJS Logo")
+<img src="https://alkitu.com/wp-content/uploads/2022/12/JavaSript-Logo.png" alt="JavaScript Logo"  width="100" height="100"/>
 
-![Express](https://alkitu.com/wp-content/uploads/2022/12/Express-Logo.png "Express Logo")
+<img src="https://alkitu.com/wp-content/uploads/2022/12/Node-JS-Logo.png" alt="NodeJS Logo"  width="100" height="100"/>
 
-![MongoDB](https://alkitu.com/wp-content/uploads/2022/12/MongoDB-Logo.png "MongoDB Logo")
+<img src="https://alkitu.com/wp-content/uploads/2022/12/Express-Logo.png" alt="Express Logo"  width="100" height="100"/>
 
-![Puppeter](https://alkitu.com/wp-content/uploads/2022/12/Puppeteer-Logo.png "Puppeter Logo")
+<img src="https://alkitu.com/wp-content/uploads/2022/12/MongoDB-Logo.png" alt="MongoDB Logo"  width="100" height="100"/>
+
+<img src="https://alkitu.com/wp-content/uploads/2022/12/Puppeteer-Logo.png" alt="Puppeter Logo"  width="100" height="100"/>
+
 
 ## Read before you start:
 - This was done for educational reasons only, you are solely responsible for what you do with this tool.
