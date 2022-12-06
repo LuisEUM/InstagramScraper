@@ -9,11 +9,11 @@ I hope this API can help or entertain you, and if you want to help me to improve
 
 
 ## Technologies
-![JavaScript](https://es.wikipedia.org/wiki/JavaScript#/media/Archivo:Unofficial_JavaScript_logo_2.svg "JavaScript Logo")
+![JavaScript](https://es.wikipedia.org/wiki/JavaScript#/media/Archivo:Unofficial_JavaScript_logo_2.svg | width=100 "JavaScript Logo" )
 
 ![NodeJS](https://nodejs.org/static/images/logo.svg "NodeJS Logo")
 
-![Express](https://upload.wikimedia.org/wikipedia/commons/6/64/Expressjs.png?20170429090805 "Express Logo")
+![Express](https://upload.wikimedia.org/wikipedia/commons/6/64/Expressjs.png?20170429090805 | width=100)
 
 ![MongoDB](https://webimages.mongodb.com/_com_assets/cms/kuyjf3vea2hg34taa-horizontal_default_slate_blue.svg?auto=format%252Ccompress "MongoDB Logo")
 
