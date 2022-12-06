@@ -10,7 +10,7 @@ I hope this API can help or entertain you, and if you want to help me to improve
 
 ## Technologies
 ![JavaScript](https://alkitu.com/wp-content/uploads/2022/12/JavaSript-Logo.png "JavaScript Logo" )
-
+<img src="https://alkitu.com/wp-content/uploads/2022/12/JavaSript-Logo.png" alt="JavaScript Logo"  width="50" height="50">
 ![NodeJS](https://alkitu.com/wp-content/uploads/2022/12/Node-JS-Logo.png "NodeJS Logo")
 
 ![Express](https://alkitu.com/wp-content/uploads/2022/12/Express-Logo.png "Express Logo")
