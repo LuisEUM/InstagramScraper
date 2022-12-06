@@ -1,11 +1,19 @@
 # InstagramScraper - API RESTful
 With this API you will be able to execute two scripts that will help you to: 
-- :one: Get a list of all the followers of any account (except private ones, unless you already follow them and they have accepted it). 
-- :two: Be able to know how many followers each user on your list has and filter the data according to the number of followers.
+:one: Get a list of all the followers of any account (except private ones, unless you already follow them and they have accepted it). 
+:two: Be able to know how many followers each user on your list has and filter the data according to the number of followers.
 
 It will also store the collected data inside a `MongoDB` database :sunglasses:. But :wink: you will have to set up an account within the `API` and multiple requirements that are explained within the Installation section. 
 
 I hope this API can help or entertain you :grin:, and if you want to help me to improve it or share some ideas feel free to contact me through my instagram @LuisEUM or my personal email luiseum95@gmail.com :smiley:.
+
+
+
+
+
+
+
+
 
 ## :wrench: Technologies:
 
