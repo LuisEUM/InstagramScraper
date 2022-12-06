@@ -64,9 +64,9 @@ module.exports.followers = async (usernameList) => {
                     url: `https://www.instagram.com/${user}`
                 } 
                 console.log(userData)
+                console.info('Current user:', userData)
 
                 data.push(userData)
-                console.log(data)
 
             } catch (error) {console.error(error);}
 
@@ -85,10 +85,9 @@ module.exports.followers = async (usernameList) => {
                     url: `https://www.instagram.com/${user}`
                 } 
 
-                console.log(userData)
+                console.info('Current user:', userData)
 
                 data.push(userData)
-                console.log(data)
 
             } catch (error) {console.error(error);}
 
@@ -96,7 +95,7 @@ module.exports.followers = async (usernameList) => {
         } catch (error) {console.error(error);}
     }
 
-    console.log(data)
+    console.log('This data will be added:', data)
     await browser.close();
 
     return [...data]

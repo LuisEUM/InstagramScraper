@@ -36,15 +36,11 @@ module.exports.list = async (req, res, next) => {
 
   if (owner === undefined) {
     return res.status(400).json(undefined);
-  } else if (req.query) {
+  } else  {
     Target.find({ $and: [{ owner }, req.query] })
       .then((target) => res.status(200).json(target))
       .catch(next);
-  } else {
-    Target.find({ owner })
-      .then((target) => res.status(200).json(target))
-      .catch(next);
-  }
+  } 
 };
 
 module.exports.update = async (req, res, next) => {
@@ -121,45 +117,24 @@ module.exports.tables = async (req, res, next) => {
 
 // }
 
+
 module.exports.followers = async (req, res, next) => {
   const target = req.target;
+  const id = req.target.id;
 
-  console.info(
-    `starting script for user ${target.username}, adding followers to the list`
-  );
-  const data = await Continue.followers(
-    target.followers,
-    target.followersWithFollowers
-  );
-  console.info(
-    `stopping script for user ${target.username}, task of adding followers to the list finished`
-  );
-
-  target.followersWithFollowers === 0
-    ? (target.followersWithFollowers = data)
-    : target.followersWithFollowers.push(...data);
-
-  target
-    .save()
-    .then((target) => res.status(200).json(target.followersWithFollowers))
-    .catch(next);
-};
-
-module.exports.filter = async (req, res, next) => {
-  const target = req.target.followersWithFollowers;
 
   if (req.query.gte || req.query.lte) {
     const gte = req.query.gte;
     const lte = req.query.lte;
 
     if (gte && lte) {
-      const filtered = target.filter(
+      const filtered = target.followersWithFollowers.filter(
         (followers) =>
           followers.totalFollowers >= gte &&
           followers.totalFollowers <= lte === true
       );
 
-      if (lte > gte)
+      if (lte > gte) 
         return res
           .status(400)
           .json(
@@ -168,21 +143,85 @@ module.exports.filter = async (req, res, next) => {
 
       return res.status(200).json(filtered);
     } else if (gte) {
-      const filtered = target.filter(
+      const filtered = target.followersWithFollowers.filter(
         (followers) => followers.totalFollowers >= gte === true
       );
       return res.status(200).json(filtered);
     } else if (lte) {
-      const filtered = target.filter(
+      const filtered = target.followersWithFollowers.filter(
         (followers) => followers.totalFollowers <= lte === true
       );
       return res.status(200).json(filtered);
     }
-  } else {
+  } else if (Object.keys(req.query).length !== 0) {
     res
       .status(400)
       .json(
         "Error 400: The query is not correct, you only can filter with lte and gte criterial with this route."
       );
+  } else {
+    console.info( 
+      `starting script for user ${target.username}, adding followers to the list`
+    );
+    const data = await Continue.followers(
+      target.followers,
+      target.followersWithFollowers
+    );
+    console.info(`stopping script for user ${target.username}, task of adding followers to the list finished`);
+
+    target.followersWithFollowers === 0
+      ? (target.followersWithFollowers = data)
+      : target.followersWithFollowers.push(...data);
+
+    target
+      .save()
+      .then((target) => res.status(200).json(target.followersWithFollowers))
+      .catch(next);
   }
 };
+
+
+
+
+
+// module.exports.filter = async (req, res, next) => {
+//   const target = req.target.followersWithFollowers;
+
+//   if (req.query.gte || req.query.lte) {
+//     const gte = req.query.gte;
+//     const lte = req.query.lte;
+
+//     if (gte && lte) {
+//       const filtered = target.filter(
+//         (followers) =>
+//           followers.totalFollowers >= gte &&
+//           followers.totalFollowers <= lte === true
+//       );
+
+//       if (lte > gte)
+//         return res
+//           .status(400)
+//           .json(
+//             "Error 400: The query is not correct, lte value should be a bigger number than gte value"
+//           );
+
+//       return res.status(200).json(filtered);
+//     } else if (gte) {
+//       const filtered = target.filter(
+//         (followers) => followers.totalFollowers >= gte === true
+//       );
+//       return res.status(200).json(filtered);
+//     } else if (lte) {
+//       const filtered = target.filter(
+//         (followers) => followers.totalFollowers <= lte === true
+//       );
+//       return res.status(200).json(filtered);
+//     }
+//   } else {
+//     res
+//       .status(400)
+//       .json(
+//         "Error 400: The query is not correct, you only can filter with lte and gte criterial with this route."
+//       );
+//   }
+// };

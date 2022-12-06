@@ -58,7 +58,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"identifier\": \"luis@example.com\",\r\n    \"password\" : \"12345678\"\r\n}",
+							"raw": "{\r\n    \"identifier\": \"tangle\",\r\n    \"password\" : \"12345678\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -126,26 +126,82 @@
 			"name": "Taget",
 			"item": [
 				{
-					"name": "Create Target",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"ramong77\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+					"name": "Seach & Filters",
+					"item": [
+						{
+							"name": "Targets List Query",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{urlV1}}/target/?followersWithFollowers.username=victoriaciscar",
+									"host": [
+										"{{urlV1}}"
+									],
+									"path": [
+										"target",
+										""
+									],
+									"query": [
+										{
+											"key": "followersWithFollowers.username",
+											"value": "victoriaciscar"
+										},
+										{
+											"key": "",
+											"value": null,
+											"disabled": true
+										}
+									]
 								}
-							}
+							},
+							"response": []
 						},
+						{
+							"name": "Target Followers Query",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{urlV1}}/target/638e2e0b299a42fd7035f053/followers/?gte=50&lte=400",
+									"host": [
+										"{{urlV1}}"
+									],
+									"path": [
+										"target",
+										"638e2e0b299a42fd7035f053",
+										"followers",
+										""
+									],
+									"query": [
+										{
+											"key": "gte",
+											"value": "50"
+										},
+										{
+											"key": "lte",
+											"value": "400"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Target Detail",
+					"request": {
+						"method": "GET",
+						"header": [],
 						"url": {
-							"raw": "{{urlV1}}/target",
+							"raw": "{{urlV1}}/target/638e2e0b299a42fd7035f053",
 							"host": [
 								"{{urlV1}}"
 							],
 							"path": [
-								"target"
+								"target",
+								"638e2e0b299a42fd7035f053"
 							]
 						}
 					},
@@ -169,91 +225,26 @@
 					"response": []
 				},
 				{
-					"name": "Targets List Query",
+					"name": "Create Target",
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
-						"url": {
-							"raw": "{{urlV1}}/target/?followersWithFollowers.username=victoriaciscar",
-							"host": [
-								"{{urlV1}}"
-							],
-							"path": [
-								"target",
-								""
-							],
-							"query": [
-								{
-									"key": "followersWithFollowers.username",
-									"value": "victoriaciscar"
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"my5lovebirds\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
 								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Target Detail",
-					"request": {
-						"method": "GET",
-						"header": [],
+							}
+						},
 						"url": {
-							"raw": "{{urlV1}}/target/638947d32a37947037117d9a",
+							"raw": "{{urlV1}}/target",
 							"host": [
 								"{{urlV1}}"
 							],
 							"path": [
-								"target",
-								"638947d32a37947037117d9a"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Target Detail Query",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{urlV1}}/target/638947d32a37947037117d9a/followers/filter/?gte=15&lte=50",
-							"host": [
-								"{{urlV1}}"
-							],
-							"path": [
-								"target",
-								"638947d32a37947037117d9a",
-								"followers",
-								"filter",
-								""
-							],
-							"query": [
-								{
-									"key": "gte",
-									"value": "15"
-								},
-								{
-									"key": "lte",
-									"value": "50"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Target Update",
-					"request": {
-						"method": "PATCH",
-						"header": [],
-						"url": {
-							"raw": "{{urlV1}}/target/6387c67463bf95b508c8bad6",
-							"host": [
-								"{{urlV1}}"
-							],
-							"path": [
-								"target",
-								"6387c67463bf95b508c8bad6"
+								"target"
 							]
 						}
 					},
@@ -265,14 +256,50 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{urlV1}}/target/638947d32a37947037117d9a/followers",
+							"raw": "{{urlV1}}/target/638e2e0b299a42fd7035f053/followers",
 							"host": [
 								"{{urlV1}}"
 							],
 							"path": [
 								"target",
-								"638947d32a37947037117d9a",
+								"638e2e0b299a42fd7035f053",
 								"followers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Target Update",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{urlV1}}/target/638e2e0b299a42fd7035f053",
+							"host": [
+								"{{urlV1}}"
+							],
+							"path": [
+								"target",
+								"638e2e0b299a42fd7035f053"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Target Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{urlV1}}/target/638947d32a37947037117d9a",
+							"host": [
+								"{{urlV1}}"
+							],
+							"path": [
+								"target",
+								"638947d32a37947037117d9a"
 							]
 						}
 					},

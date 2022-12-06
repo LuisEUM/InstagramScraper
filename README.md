@@ -120,14 +120,106 @@ MONGODB_URI="mongodb+srv://<account>:<password>@instagramscrapper.kcmwbdf.mongod
 
 #### Target Routes:
 
-| http verb | path                 | status codes  | purpose |
-| --------- | -------------------- | ------------- | ------- |
-| POST      | target               | 201, 400      | create  |
+| http verb | path                          | status codes              | purpose            |
+| --------- | ----------------------------- | ------------------------- | ------------------ |
+| GET       | target/:id                    | 200                       | detail             |
+| GET       | target                        | 200                       | list               |
+| POST      | target                        | 201, 400, 404, 401, 403   | create             |
+| GET       | target/:id/followers          | 201, 400, 404, 401, 403   | create & update    |
+| PATCH     | target/:id                    | 200, 400, 404, 401, 403   | update             |
+| DELETE    | target/:id                    | 204, 404, 404, 401, 403   | delete             |
 
-- `POST` **http://localhost:4000/api/v1/target:**  Create your target account with his username. This will return and create the owner (your account id), the target username, a list of followers (this will be an array) and the followers total (number). 
+
+
+
+
+- `POST` **http://localhost:4000/api/v1/target:**  Create your target account with his username. This will return and create the owner (your account id), the target username, a list of followers (this will be an empty array) and the followers total (number). 
 
 ```
 {
     "username": "elonmuskoffiicial",
 }
 ```
+
+
+- `GET` **http://localhost:4000/api/v1/target:**  This will return the full list of targets. 
+
+```
+[
+    {
+        "owner": "638e2d61299a42fd7035f04e",
+        "username": "targetexample1",
+        "followers": [
+            "example1",
+            "example2",
+            "example3",
+        ],
+        "totalFollowers": 3,
+        "followersWithFollowers": [],
+        "createdAt": "2022-12-05T17:44:43.622Z",
+        "updatedAt": "2022-12-05T17:58:51.574Z",
+        "id": "638e2e0b299a42fd7035f053"
+    },
+        {
+        "owner": "638e2d61299a42fd7035f04e",
+        "username": "targetexample2",
+        "followers": [
+            "example1",
+            "example2",
+        ],
+        "totalFollowers": 2,
+        "followersWithFollowers": [],
+        "createdAt": "2022-12-05T17:44:43.622Z",
+        "updatedAt": "2022-12-05T17:58:51.574Z",
+        "id": "638e2e0b299a42fd7035f053"
+    }
+]
+```
+
+
+- `GET` **http://localhost:4000/api/v1/target/638e2d61299a42fd7035f04e:**  This will return the info from the target id that you wrote in the param.
+
+```
+
+    {
+    "owner": "638e2d61299a42fd7035f04e",
+    "username": "targetexample2",
+    "followers": [
+        "example1",
+        "example2",
+    ],
+    "totalFollowers": 2,
+    "followersWithFollowers": [],
+    "createdAt": "2022-12-05T17:44:43.622Z",
+    "updatedAt": "2022-12-05T17:58:51.574Z",
+    "id": "638e2e0b299a42fd7035f053"
+}
+
+```
+
+
+- `GET` **http://localhost:4000/api/v1/target/638e2d61299a42fd7035f04e/followers :**  This will return the info from the target id that you wrote in the param and will fill the followersWithFollowers array.
+
+
+```
+
+    {
+    "owner": "638e2d61299a42fd7035f04e",
+    "username": "targetexample2",
+    "followers": [
+        "example1",
+        "example2",
+    ],
+    "totalFollowers": 2,
+    "followersWithFollowers": [],
+    "createdAt": "2022-12-05T17:44:43.622Z",
+    "updatedAt": "2022-12-05T17:58:51.574Z",
+    "id": "638e2e0b299a42fd7035f053"
+}
+
+```
+
+- `PATCH` **soon** 
+
+- `DELETE` **soon** 
+
