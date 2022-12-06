@@ -1,13 +1,14 @@
 # InstagramScraper - API RESTful
-With this API you will be able to execute two scripts that will help you to: 
+With this API you will be able to execute two scripts that will help you to:
+<br/> 
 :one: Get a list of all the followers of any account (except private ones, unless you already follow them and they have accepted it). 
+<br/>
 :two: Be able to know how many followers each user on your list has and filter the data according to the number of followers.
 
 It will also store the collected data inside a `MongoDB` database :sunglasses:. But :wink: you will have to set up an account within the `API` and multiple requirements that are explained within the Installation section. 
 
 I hope this API can help or entertain you :grin:, and if you want to help me to improve it or share some ideas feel free to contact me through my instagram @LuisEUM or my personal email luiseum95@gmail.com :smiley:.
 
-<br/>
 <br/>
 <br/>
 
@@ -21,11 +22,16 @@ I hope this API can help or entertain you :grin:, and if you want to help me to 
 <img src="https://alkitu.com/wp-content/uploads/2022/12/Puppeteer-Logo.png" alt="Puppeter Logo"  width="100" height="100"/>
 </div>
 
+<br/>
+<br/>
+
 ## :memo: Read before you start:
 - This was done for educational reasons only, you are solely responsible for what you do with this tool.
 - This project was made on Windows, it may have problems with other operating systems.
 - Make sure that the installation has been successful before using the API.
 
+<br/>
+<br/>
 
 ## :book: Installation:
 1. Clone or Fork this Repo.
@@ -68,15 +74,24 @@ MONGODB_URI="mongodb+srv://<account>:<password>@instagramscrapper.kcmwbdf.mongod
 7. Type the following script for development mode `npm run dev` and if everything is done correctly you will see a message in your terminal indicating the port and database you are using.
 
 
-## :clipboard: API RESTful Instructions:
+<br/>
+<br/>
+<br/>
 
+## :clipboard: API RESTful Instructions:
 ### :floppy_disk: Current version:
 - v1 
+
+<br/>
+<br/>
 
 ### :computer: Domain with the Basic Path:
 - http://localhost:4000/api/v1/
 
 **Note:** Remember that the domain port number may be different if you have changed it before.
+
+<br/>
+<br/>
 
 ### :motorway: Available Paths:
 
@@ -129,6 +144,9 @@ MONGODB_URI="mongodb+srv://<account>:<password>@instagramscrapper.kcmwbdf.mongod
 ```
 
 - `DELETE` **http://localhost:4000/api/v1/logout:** This will delete from the headers your credentials and log you out.
+
+<br/>
+<br/>
 
 #### :dart: Target Routes:
 
@@ -258,6 +276,9 @@ You will obtain something similar to this:
 - `PATCH` **http://localhost:4000/api/v1/target/638e2d61299a42fd7035f04e:** Overwrites and updates from scratch selected in the param with the id. This will run the main script again, collecting the target instagram account data.
 
 - `DELETE` **http://localhost:4000/api/v1/target/638e2d61299a42fd7035f04e:** Delete the target data selected in the param with the id.
+
+<br/>
+<br/>
 
 #### :mag_right: Filter Examples:
 
