@@ -7,13 +7,9 @@ It will also store the collected data inside a `MongoDB` database :sunglasses:. 
 
 I hope this API can help or entertain you :grin:, and if you want to help me to improve it or share some ideas feel free to contact me through my instagram @LuisEUM or my personal email luiseum95@gmail.com :smiley:.
 
-
-
-
-
-
-
-
+<br/>
+<br/>
+<br/>
 
 ## :wrench: Technologies:
 
