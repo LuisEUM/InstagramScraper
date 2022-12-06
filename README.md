@@ -5,9 +5,9 @@ With this API you will be able to execute two scripts that will help you to:
 <br/>
 :two: Be able to know how many followers each user on your list has and filter the data according to the number of followers.
 
-It will also store the collected data inside a `MongoDB` database :sunglasses:. But :wink: you will have to set up an account within the `API` and multiple requirements that are explained within the Installation section. 
+It will also store the collected data inside a `MongoDB` database :sunglasses:. But you will have to set up an account within the `API` and multiple requirements that are explained within the Installation section. 
 
-I hope this API can help or entertain you :grin:, and if you want to help me to improve it or share some ideas feel free to contact me through my instagram @LuisEUM or my personal email luiseum95@gmail.com :smiley:.
+I hope this API can help or entertain you, and if you want to help me to improve it or share some ideas feel free to contact me through my instagram @LuisEUM or my personal email luiseum95@gmail.com :smiley:.
 
 <br/>
 
