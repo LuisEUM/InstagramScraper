@@ -9,15 +9,15 @@ I hope this API can help or entertain you, and if you want to help me to improve
 
 
 ## Technologies
-![JavaScript](https://es.wikipedia.org/wiki/JavaScript#/media/Archivo:Unofficial_JavaScript_logo_2.svg | width=100 "JavaScript Logo" )
+![JavaScript](https://alkitu.com/wp-content/uploads/2022/12/JavaSript-Logo.png "JavaScript Logo" )
 
-![NodeJS](https://nodejs.org/static/images/logo.svg "NodeJS Logo")
+![NodeJS](https://alkitu.com/wp-content/uploads/2022/12/Node-JS-Logo.png "NodeJS Logo")
 
-![Express](https://upload.wikimedia.org/wikipedia/commons/6/64/Expressjs.png?20170429090805 | width=100)
+![Express](https://alkitu.com/wp-content/uploads/2022/12/Express-Logo.png "Express Logo")
 
-![MongoDB](https://webimages.mongodb.com/_com_assets/cms/kuyjf3vea2hg34taa-horizontal_default_slate_blue.svg?auto=format%252Ccompress "MongoDB Logo")
+![MongoDB](https://alkitu.com/wp-content/uploads/2022/12/MongoDB-Logo.png "MongoDB Logo")
 
-![Puppeter](https://user-images.githubusercontent.com/10379601/29446482-04f7036a-841f-11e7-9872-91d1fc2ea683.png "Puppeter Logo")
+![Puppeter](https://alkitu.com/wp-content/uploads/2022/12/Puppeteer-Logo.png "Puppeter Logo")
 
 ## Read before you start:
 - This was done for educational reasons only, you are solely responsible for what you do with this tool.
@@ -141,7 +141,7 @@ MONGODB_URI="mongodb+srv://<account>:<password>@instagramscrapper.kcmwbdf.mongod
 | --------- | ----------------------------- | ------------------------- | ------------------ |
 | GET       | target/:id                    | 200                       | detail             |
 | GET       | target                        | 200                       | list               |
-| POST      | target                        | 201, 400, 404, 401, 403   | create             |
+| POST      | target                        | 201, 400, 401             | create             |
 | GET       | target/:id/followers          | 201, 400, 404, 401, 403   | create & update    |
 | PATCH     | target/:id                    | 200, 400, 404, 401, 403   | update             |
 | DELETE    | target/:id                    | 204, 404, 404, 401, 403   | delete             |
