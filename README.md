@@ -1,6 +1,23 @@
-# InstagramScraper
-With this API you will be able to get a list of all the followers of any account (except private ones, unless you already follow them and they have accepted it). And you will also be able to know how many followers each user has in your list.
+# InstagramScraper - API RESTful
+With this API you will be able to execute two scripts that will help you to: 
+- Get a list of all the followers of any account (except private ones, unless you already follow them and they have accepted it),
+- Be able to know how many followers each user on your list has and filter the data according to the number of followers.
 
+It will also store the collected data inside a `MongoDB` database. But you will have to set up an account within the `API` and multiple requirements that are explained within the Installation section. 
+
+I hope this API can help or entertain you, and if you want to help me to improve it or share some ideas feel free to contact me through my instagram @LuisEUM or my personal email luiseum95@gmail.com.
+
+
+## Technologies
+![JavaScript](https://es.wikipedia.org/wiki/JavaScript#/media/Archivo:Unofficial_JavaScript_logo_2.svg "JavaScript Logo")
+
+![NodeJS](https://nodejs.org/static/images/logo.svg "NodeJS Logo")
+
+![Express](https://upload.wikimedia.org/wikipedia/commons/6/64/Expressjs.png?20170429090805 "Express Logo")
+
+![MongoDB](https://webimages.mongodb.com/_com_assets/cms/kuyjf3vea2hg34taa-horizontal_default_slate_blue.svg?auto=format%252Ccompress "MongoDB Logo")
+
+![Puppeter](https://user-images.githubusercontent.com/10379601/29446482-04f7036a-841f-11e7-9872-91d1fc2ea683.png "Puppeter Logo")
 
 ## Read before you start:
 - This was done for educational reasons only, you are solely responsible for what you do with this tool.
@@ -8,7 +25,7 @@ With this API you will be able to get a list of all the followers of any account
 - Make sure that the installation has been successful before using the API.
 
 
-##  INSTALLATION:
+##  InstallationN:
 1. Clone or Fork this Repo.
 
 2. Create one **.env** file inside the **api** folder.
@@ -49,7 +66,7 @@ MONGODB_URI="mongodb+srv://<account>:<password>@instagramscrapper.kcmwbdf.mongod
 7. Type the following script for development mode `npm run dev` and if everything is done correctly you will see a message in your terminal indicating the port and database you are using.
 
 
-## API REST HTTP Instructions:
+## API RESTful Instructions:
 
 ### Current version:
 - v1 
@@ -131,8 +148,6 @@ MONGODB_URI="mongodb+srv://<account>:<password>@instagramscrapper.kcmwbdf.mongod
 
 
 
-
-
 - `POST` **http://localhost:4000/api/v1/target:**  Create your target account with his username. This will return and create the owner (your account id), the target username, a list of followers (this will be an empty array) and the followers total (number). 
 
 ```
@@ -199,7 +214,7 @@ MONGODB_URI="mongodb+srv://<account>:<password>@instagramscrapper.kcmwbdf.mongod
 - `GET` **http://localhost:4000/api/v1/target/638e2d61299a42fd7035f04e/followers:**
 
     - **OPTIONS ON THIS ROUTE:** 
-        - The first time it will run a script that will return the target ID information you typed in the parameter, and fill in the followersWithFollowers array.
+        - The first time it will run a script that will return the target id information you typed in the parameter, and fill in the followersWithFollowers array.
         - The next time it will automatically check the followers and continue the process where it left off last time. (This is done because instagram will probably ban you before you get the full data back).  
 
 ```
@@ -232,7 +247,8 @@ MONGODB_URI="mongodb+srv://<account>:<password>@instagramscrapper.kcmwbdf.mongod
 ```
 
 
-- `PATCH` **http://localhost:4000/api/v1/target/638e2d61299a42fd7035f04e:** Overwrites and updates from scratch the selected target data with id. This will run the main script again, collecting the target instagram account data.
+- `PATCH` **http://localhost:4000/api/v1/target/638e2d61299a42fd7035f04e:** Overwrites and updates from scratch selected in the param with the id. This will run the main script again, collecting the target instagram account data.
 
-- `DELETE` **http://localhost:4000/api/v1/target/638e2d61299a42fd7035f04e:** 
+- `DELETE` **http://localhost:4000/api/v1/target/638e2d61299a42fd7035f04e:** Delete the target data selected in the param with the id.
 
+#### Filter Examples:
