@@ -180,7 +180,6 @@ MONGODB_URI="mongodb+srv://<account>:<password>@instagramscrapper.kcmwbdf.mongod
 - `GET` **http://localhost:4000/api/v1/target/638e2d61299a42fd7035f04e:**  This will return the info from the target id that you wrote in the param.
 
 ```
-
     {
     "owner": "638e2d61299a42fd7035f04e",
     "username": "targetexample2",
@@ -194,15 +193,16 @@ MONGODB_URI="mongodb+srv://<account>:<password>@instagramscrapper.kcmwbdf.mongod
     "updatedAt": "2022-12-05T17:58:51.574Z",
     "id": "638e2e0b299a42fd7035f053"
 }
-
 ```
 
 
-- `GET` **http://localhost:4000/api/v1/target/638e2d61299a42fd7035f04e/followers :**  This will return the info from the target id that you wrote in the param and will fill the followersWithFollowers array.
+- `GET` **http://localhost:4000/api/v1/target/638e2d61299a42fd7035f04e/followers:**
 
+    - **OPTIONS ON THIS ROUTE:** 
+        - The first time it will run a script that will return the target ID information you typed in the parameter, and fill in the followersWithFollowers array.
+        - The next time it will automatically check the followers and continue the process where it left off last time. (This is done because instagram will probably ban you before you get the full data back).  
 
 ```
-
     {
     "owner": "638e2d61299a42fd7035f04e",
     "username": "targetexample2",
@@ -211,15 +211,28 @@ MONGODB_URI="mongodb+srv://<account>:<password>@instagramscrapper.kcmwbdf.mongod
         "example2",
     ],
     "totalFollowers": 2,
-    "followersWithFollowers": [],
+    "followersWithFollowers": [
+        {
+            "username": "example1",
+            "totalFollowers": 1000,
+            "private": true,
+            "url": "https://www.instagram.com/example1"
+        },
+        {
+            "username": "example2",
+            "totalFollowers": 4000,
+            "private": false,
+            "url": "https://www.instagram.com/example2"
+        },
+    ],
     "createdAt": "2022-12-05T17:44:43.622Z",
     "updatedAt": "2022-12-05T17:58:51.574Z",
     "id": "638e2e0b299a42fd7035f053"
 }
-
 ```
 
-- `PATCH` **soon** 
 
-- `DELETE` **soon** 
+- `PATCH` **http://localhost:4000/api/v1/target/638e2d61299a42fd7035f04e:** Overwrites and updates from scratch the selected target data with id. This will run the main script again, collecting the target instagram account data.
+
+- `DELETE` **http://localhost:4000/api/v1/target/638e2d61299a42fd7035f04e:** 
 
