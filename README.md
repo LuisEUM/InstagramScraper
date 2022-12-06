@@ -10,7 +10,6 @@ It will also store the collected data inside a `MongoDB` database :sunglasses:. 
 I hope this API can help or entertain you :grin:, and if you want to help me to improve it or share some ideas feel free to contact me through my instagram @LuisEUM or my personal email luiseum95@gmail.com :smiley:.
 
 <br/>
-<br/>
 
 ## :wrench: Technologies:
 
@@ -23,14 +22,12 @@ I hope this API can help or entertain you :grin:, and if you want to help me to 
 </div>
 
 <br/>
-<br/>
 
 ## :memo: Read before you start:
 - This was done for educational reasons only, you are solely responsible for what you do with this tool.
 - This project was made on Windows, it may have problems with other operating systems.
 - Make sure that the installation has been successful before using the API.
 
-<br/>
 <br/>
 
 ## :book: Installation:
@@ -83,14 +80,12 @@ MONGODB_URI="mongodb+srv://<account>:<password>@instagramscrapper.kcmwbdf.mongod
 - v1 
 
 <br/>
-<br/>
 
 ### :computer: Domain with the Basic Path:
 - http://localhost:4000/api/v1/
 
 **Note:** Remember that the domain port number may be different if you have changed it before.
 
-<br/>
 <br/>
 
 ### :motorway: Available Paths:
@@ -105,6 +100,8 @@ MONGODB_URI="mongodb+srv://<account>:<password>@instagramscrapper.kcmwbdf.mongod
 | PATCH     | update               | 200, 400, 404 | update  |
 | DELETE    | logout               | 204, 404      | logout  |
 
+<br/>
+
 - `POST` **http://localhost:4000/api/v1/register:**  Create a new account with your username, email and password.
 
 ```
@@ -114,6 +111,8 @@ MONGODB_URI="mongodb+srv://<account>:<password>@instagramscrapper.kcmwbdf.mongod
     "password" : "Example.123"
 }
 ```
+<br/>
+
 
 - `POST` **http://localhost:4000/api/v1/authenticate:**  Login in your account with your email addres or username:
 
@@ -123,6 +122,8 @@ MONGODB_URI="mongodb+srv://<account>:<password>@instagramscrapper.kcmwbdf.mongod
     "password" : "Example.123"
 }
 ```
+<br/>
+
 
 - `GET` **http://localhost:4000/api/v1/profile:**  Return your account info if you are logged.
 
@@ -134,6 +135,8 @@ MONGODB_URI="mongodb+srv://<account>:<password>@instagramscrapper.kcmwbdf.mongod
     "password" : "Example.123"
 }
 ```
+<br/>
+
 
 - `PATCH` **http://localhost:4000/api/v1/update:** Update any value of your account except the id.
 
@@ -142,6 +145,8 @@ MONGODB_URI="mongodb+srv://<account>:<password>@instagramscrapper.kcmwbdf.mongod
     "username": "luis",
 }
 ```
+<br/>
+
 
 - `DELETE` **http://localhost:4000/api/v1/logout:** This will delete from the headers your credentials and log you out.
 
@@ -158,6 +163,9 @@ MONGODB_URI="mongodb+srv://<account>:<password>@instagramscrapper.kcmwbdf.mongod
 | GET       | target/:id/followers          | 201, 400, 404, 401, 403   | create & update    |
 | PATCH     | target/:id                    | 200, 400, 404, 401, 403   | update             |
 | DELETE    | target/:id                    | 204, 404, 404, 401, 403   | delete             |
+
+<br/>
+
 
 - `POST` **http://localhost:4000/api/v1/target:**  Create your target account by typing its username inside the body with the username key. This will run the first script, which will return and create the owner (your account id), the target username, a list of followers (it will be an empty array) and the total followers (number).
 
@@ -187,6 +195,8 @@ You will obtain something similar to this:
 ```
 
 **Note:** The `totalFollowers` may be different from the length of `followers` because instagram has a limit number of requests per ip and account.
+
+<br/>
 
 - `GET` **http://localhost:4000/api/v1/target:**  This will return the complete list of targets you have previously searched for. 
 
@@ -222,6 +232,8 @@ You will obtain something similar to this:
 ]
 ```
 
+<br/>
+
 - `GET` **http://localhost:4000/api/v1/target/638e2d61299a42fd7035f04e:**  This will return the info from the target id that you wrote in the param.
 
 ```
@@ -239,6 +251,7 @@ You will obtain something similar to this:
     "id": "638e2e0b299a42fd7035f053"
 }
 ```
+<br/>
 
 - `GET` **http://localhost:4000/api/v1/target/638e2d61299a42fd7035f04e/followers:**
     - The first time it will run a script that will return the target id information you typed in the parameter, and fill in the followersWithFollowers array.
@@ -272,6 +285,7 @@ You will obtain something similar to this:
     "id": "638e2e0b299a42fd7035f053"
 }
 ```
+<br/>
 
 - `PATCH` **http://localhost:4000/api/v1/target/638e2d61299a42fd7035f04e:** Overwrites and updates from scratch selected in the param with the id. This will run the main script again, collecting the target instagram account data.
 
@@ -287,6 +301,7 @@ You will obtain something similar to this:
 | GET       | target                        | match query params           |
 | GET       | target/:id/followers          | gte=number lte=number     |
 
+<br/>
 
 - `GET` **http://localhost:4000/api/v1/target/?followersWithFollowers.username=example4:** You could try to find any match inside you list of targets following the query params.
 
@@ -326,6 +341,7 @@ You will obtain something similar to this:
     }
 ]
 ```
+<br/>
 
 - `GET` **http://localhost:4000/api/v1/target/638e2e0b299a42fd7035f053/followers/?gte=2000&lte=7000:** You could obtain a list of followers accounts filtered with `gte` (greater than or equal or greater) and/or `lte` (less than or equal or less).
 
@@ -344,6 +360,7 @@ You will obtain something similar to this:
     }
 ]
 ```
+<br/>
+<br/>
 
-
-Inside this repo you will see a `json` file for [Postman](https://www.postman.com/), enjoy it and play with the api. :smile:
+:gift: Inside this repo you will see a `json` file for [Postman](https://www.postman.com/), enjoy it and play with the api. :smile:
