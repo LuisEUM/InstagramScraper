@@ -28,6 +28,7 @@ I hope this API can help or entertain you, and if you want to help me to improve
 ## :memo: Read before you start:
 - This was done for educational reasons only, you are solely responsible for what you do with this tool.
 - This project was made on Windows, it may have problems with other operating systems.
+- I recommend that you use a proxy because Instagram can block your IP address.
 - Make sure that the installation has been successful before using the API.
 
 <br/>
@@ -48,6 +49,14 @@ PASSWORD_INSTAGRAM="Example.1234"
 4. Locate you terminal inside the **api** folder and install all the dependencies with `npm install`. 
 
 5. **Optional:** Set inside the **.env** file the variable `PORT`, if you don't do that the app will run in the `PORT=4000`.
+
+```
+PORT="6000"
+"
+```  
+
+**Note:** I recomend you to use a PROXY because Instagram can ban your IP address.
+
 
 6. You have two options now: 
 
@@ -169,9 +178,9 @@ MONGODB_URI="mongodb+srv://<account>:<password>@instagramscrapper.kcmwbdf.mongod
 <br/>
 
 
-- `POST` **http://localhost:4000/api/v1/target:**  Create your target account by typing its username inside the body with the username key. This will run the first script, which will return and create the owner (your account id), the target username, a list of followers (it will be an empty array) and the total followers (number).
+- `POST` **http://localhost:4000/api/v1/target:**  Create your target account by typing its username inside the `body` with the username key. This will run the first script, which will return and create the owner (your account id), the target username, a list of followers (it will be an empty array) and the total followers (number).
 
-This should be write it inside the body:
+This should be write it inside the `body`:
 ```
 {
     "username": "targetexample1",
@@ -289,7 +298,21 @@ You will obtain something similar to this:
 ```
 <br/>
 
-- `PATCH` **http://localhost:4000/api/v1/target/638e2d61299a42fd7035f04e:** Overwrites and updates from scratch selected in the param with the id. This will run the main script again, collecting the target instagram account data.
+- `PATCH` **http://localhost:4000/api/v1/target/638e2d61299a42fd7035f04e:** 
+    - If the `body` is empty, it will overwrites and updates from scratch selected in the param with the id. This will run the main script again, collecting the target instagram account data.
+    - If you fill the `body` with `username`, `followers` or `totalFollowers`, it will not run any script and will only overwrite the values of the keys you sent. This is perfect in case your target name has changed or you have the list of followers from another api. 
+
+``` 
+{
+    "followers": [
+        "example1",
+        "example2",
+        "example6",
+        "example7",
+        "example8",
+    ]
+}
+```
 
 - `DELETE` **http://localhost:4000/api/v1/target/638e2d61299a42fd7035f04e:** Delete the target data selected in the param with the id.
 

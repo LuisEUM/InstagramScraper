@@ -10,4 +10,4 @@ router.get("/:id/followers", secure.isAuthenticated, secure.isTargetOwnedByUser,
 router.patch("/:id", secure.isAuthenticated, secure.isTargetOwnedByUser, target.update);
 router.delete("/:id", secure.isAuthenticated, secure.isTargetOwnedByUser, target.delete);
 
-module.exports = router; 
+module.exports = router;

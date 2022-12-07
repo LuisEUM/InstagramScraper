@@ -1,4 +1,4 @@
-const { Tables, List, Followers, Continue } = require("../scripts");
+const { List, Continue } = require("../scripts");
 const { Target } = require("../models");
 
 module.exports.detail = async (req, res, next) => {
@@ -46,27 +46,37 @@ module.exports.list = async (req, res, next) => {
 module.exports.update = async (req, res, next) => {
   const data = req.body;
   delete data.owner;
-  delete data.followers;
-  delete data.totalFollowers;
-  delete data.username;
 
   const target = req.target;
 
-  console.info(
-    `starting script for user ${target.username}, updating followers list`
-  );
-  const updatedData = await List.followers(target.username);
-  console.info(
-    `stopping script for user ${target.username}, updated followers list`
-  );
+  if (data.followers || data.username || data.totalFollowers ) {
 
-  target.followers = updatedData.followers;
-  target.totalFollowers = updatedData.totalFollowers;
+    target.followers = data.followers ?  data.followers : target.followers;
+    target.username = data.username ?  data.username : target.username;
+    target.totalFollowers = data.totalFollowers ?  data.totalFollowers : target.totalFollowers;
 
-  target
-    .save()
-    .then((target) => res.status(200).json(target))
-    .catch(next);
+    target
+      .save()
+      .then((target) => res.status(200).json(target))
+      .catch(next);
+
+  } else {
+    console.info(`starting script for user ${target.username}, updating followers list`)
+    const updatedData = await List.followers(target.username);
+    console.info(
+      `stopping script for user ${target.username}, updated followers list`
+    );
+
+    target.followers = updatedData.followers;
+    target.totalFollowers = updatedData.totalFollowers;
+  
+    target
+      .save()
+      .then((target) => res.status(200).json(target))
+      .catch(next);
+  }
+
+
 };
 
 module.exports.delete = (req, res, next) => {
@@ -75,57 +85,15 @@ module.exports.delete = (req, res, next) => {
     .catch(next);
 };
 
-module.exports.tables = async (req, res, next) => {
-  const target = req.target;
-  const firstCriterial = req.params.firstCriterial;
-  const secondCriterial = req.params.secondCriterial;
-
-  console.info(
-    `starting script for user ${target.username}, creating followers list with createrials`
-  );
-  const data = await Tables.followers(
-    target.followers,
-    firstCriterial,
-    secondCriterial
-  );
-  console.info(
-    `stopping script for user ${target.username}, followers list  with createrials created`
-  );
-
-  target.followersWithFollowers = data;
-
-  target
-    .save()
-    .then((target) => res.status(200).json(target.followersWithFollowers))
-    .catch(next);
-};
-
-// module.exports.followers = async (req, res, next) => {
-
-//   const target = req.target
-
-//   console.info(`starting script for user ${target.username}, creating followers list`);
-//   const data = await Followers.followers(target.followers);
-//   console.info(`stopping script for user ${target.username}, followers list created`);
-
-//   target.followersWithFollowers = data
-
-//   target
-//       .save()
-//       .then(target => res.status(200).json(target.followersWithFollowers))
-//       .catch(next);
-
-// }
-
 
 module.exports.followers = async (req, res, next) => {
   const target = req.target;
   const id = req.target.id;
+  console.log(req.query)
 
-
-  if (req.query.gte || req.query.lte) {
-    const gte = req.query.gte;
-    const lte = req.query.lte;
+  if (parseInt(req.query.gte) || parseInt(req.query.lte)) {
+    const gte = parseInt(req.query.gte);
+    const lte = parseInt(req.query.lte);
 
     if (gte && lte) {
       const filtered = target.followersWithFollowers.filter(
@@ -134,12 +102,13 @@ module.exports.followers = async (req, res, next) => {
           followers.totalFollowers <= lte === true
       );
 
-      if (lte > gte) 
-        return res
-          .status(400)
-          .json(
-            "Error 400: The query is not correct, lte value should be a bigger number than gte value"
-          );
+      if (lte <= gte) {
+        console.log(lte, gte)
+        return res.status(400).json("Error 400: The query is not correct, lte value should be a bigger number than gte value");
+      }
+
+
+
 
       return res.status(200).json(filtered);
     } else if (gte) {
@@ -154,6 +123,9 @@ module.exports.followers = async (req, res, next) => {
       return res.status(200).json(filtered);
     }
   } else if (Object.keys(req.query).length !== 0) {
+
+    console.log("this is the error")
+
     res
       .status(400)
       .json(
