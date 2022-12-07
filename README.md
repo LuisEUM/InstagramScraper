@@ -28,6 +28,7 @@ I hope this API can help or entertain you, and if you want to help me to improve
 ## :memo: Read before you start:
 - This was done for educational reasons only, you are solely responsible for what you do with this tool.
 - This project was made on Windows, it may have problems with other operating systems.
+- The number of requests you can get from this api will be limited by Instagram.
 - I recommend that you use a proxy because Instagram can block your IP address.
 - Make sure that the installation has been successful before using the API.
 
@@ -55,7 +56,7 @@ PORT="6000"
 "
 ```  
 
-**Note:** I recomend you to use a PROXY because Instagram can ban your IP address.
+**Note:** I recomend you to use a **PROXY** because Instagram can ban your IP address.
 
 
 6. You have two options now: 
@@ -113,7 +114,7 @@ MONGODB_URI="mongodb+srv://<account>:<password>@instagramscrapper.kcmwbdf.mongod
 
 <br/>
 
-- `POST` **http://localhost:4000/api/v1/register:**  Create a new account with your username, email and password.
+- `POST` **http://localhost:4000/api/v1/register:**  Create a new account with your `username`, `email` and `password`.
 
 ```
 {
@@ -125,7 +126,7 @@ MONGODB_URI="mongodb+srv://<account>:<password>@instagramscrapper.kcmwbdf.mongod
 <br/>
 
 
-- `POST` **http://localhost:4000/api/v1/authenticate:**  Login in your account with your email addres or username:
+- `POST` **http://localhost:4000/api/v1/authenticate:**  Login in your account with your `email` addres or `username`:
 
 ```
 {
@@ -149,7 +150,7 @@ MONGODB_URI="mongodb+srv://<account>:<password>@instagramscrapper.kcmwbdf.mongod
 <br/>
 
 
-- `PATCH` **http://localhost:4000/api/v1/update:** Update any value of your account except the id.
+- `PATCH` **http://localhost:4000/api/v1/update:** Update any value of your account except the `id`.
 
 ```
 {
@@ -178,7 +179,7 @@ MONGODB_URI="mongodb+srv://<account>:<password>@instagramscrapper.kcmwbdf.mongod
 <br/>
 
 
-- `POST` **http://localhost:4000/api/v1/target:**  Create your target account by typing its username inside the `body` with the username key. This will run the first script, which will return and create the owner (your account id), the target username, a list of followers (it will be an empty array) and the total followers (number).
+- `POST` **http://localhost:4000/api/v1/target:**  Create your target account by typing its `username` inside the `body` with the username key. This will run the first script, which will return and create the `owner` (your account `id`), the target `username`, a list of `followers` from your target, the `totalFollowers` (number) and  `followersWithFollowers` (an empty array for now).
 
 This should be write it inside the `body`:
 ```
@@ -245,7 +246,7 @@ You will obtain something similar to this:
 
 <br/>
 
-- `GET` **http://localhost:4000/api/v1/target/638e2d61299a42fd7035f04e:**  This will return the info from the target id that you wrote in the param.
+- `GET` **http://localhost:4000/api/v1/target/638e2d61299a42fd7035f04e:**  This will return the info from the target `id` that you wrote in the param.
 
 ```
 {
@@ -265,8 +266,8 @@ You will obtain something similar to this:
 <br/>
 
 - `GET` **http://localhost:4000/api/v1/target/638e2d61299a42fd7035f04e/followers:**
-    - The first time it will run a script that will return the target id information you typed in the parameter, and fill in the followersWithFollowers array.
-    - The next time it will automatically check the followers and continue the process where it left off last time. (This is done because instagram will probably ban you before you get the full data back).  
+    - The first time it will run a script that will return the target `id` information you typed in the parameter, and fill in the `followersWithFollowers` array.
+    - The next time it will automatically check the `followers` and continue the process where it left off last time. (This is done because instagram will probably ban you before you get the full data back).  
 
 ```
 {
@@ -299,7 +300,7 @@ You will obtain something similar to this:
 <br/>
 
 - `PATCH` **http://localhost:4000/api/v1/target/638e2d61299a42fd7035f04e:** 
-    - If the `body` is empty, it will overwrites and updates from scratch selected in the param with the id. This will run the main script again, collecting the target instagram account data.
+    - If the `body` is empty, it will overwrites and updates from scratch selected in the param with the `id`. This will run the main script again, collecting the target instagram account data.
     - If you fill the `body` with `username`, `followers` or `totalFollowers`, it will not run any script and will only overwrite the values of the keys you sent. This is perfect in case your target name has changed or you have the list of followers from another api. 
 
 ``` 
@@ -314,7 +315,7 @@ You will obtain something similar to this:
 }
 ```
 
-- `DELETE` **http://localhost:4000/api/v1/target/638e2d61299a42fd7035f04e:** Delete the target data selected in the param with the id.
+- `DELETE` **http://localhost:4000/api/v1/target/638e2d61299a42fd7035f04e:** Delete the target data selected in the param with the `id`.
 
 <br/>
 <br/>
@@ -328,7 +329,7 @@ You will obtain something similar to this:
 
 <br/>
 
-- `GET` **http://localhost:4000/api/v1/target/?followersWithFollowers.username=example4:** You could try to find any match inside you list of targets following the query params.
+- `GET` **http://localhost:4000/api/v1/target/?followersWithFollowers.username=example4:** You could try to find any match inside you list of targets with the `query params`.
 
 ```
 [
@@ -368,7 +369,7 @@ You will obtain something similar to this:
 ```
 <br/>
 
-- `GET` **http://localhost:4000/api/v1/target/638e2e0b299a42fd7035f053/followers/?gte=2000&lte=7000:** You could obtain a list of followers accounts filtered with `gte` (greater than or equal or greater) and/or `lte` (less than or equal or less).
+- `GET` **http://localhost:4000/api/v1/target/638e2e0b299a42fd7035f053/followers/?gte=2000&lte=7000:** You could obtain a list of `followersWithFollowers` accounts filtered with `gte` (greater than or equal or greater) and/or `lte` (less than or equal or less).
 
 ```
 [
